@@ -16,6 +16,6 @@ e_btn.style.display = 'none';
 
 range.addEventListener('input', function() {
     rangeSpan.textContent = range.value;
-    circle.style.width = range.value + 'px';
-    circle.style.height = range.value + 'px';
+    circle.style.width = range.value + '%';
+    circle.style.height = range.value + '%';
 })
