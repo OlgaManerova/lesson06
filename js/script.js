@@ -5,27 +5,21 @@ const headerInput = document.querySelector('.header-input');
 const todoList = document.querySelector('.todo-list');
 const todoCompleted = document.querySelector('.todo-completed');
 
-// console.log(todoControl);
-// console.log(headerInput);
-// console.log(todoList);
-// console.log(todoControl);
 
-const toDoData = [
-    // {
-    //     text: 'Сварить кофе',
-    //     complited: false,
-    // },
-    // {
-    //     text: 'Помыть посуду',
-    //     complited: true,
-    // },
-];
+let toDoData = [];
+
+
+const start = function() {
+    toDoData = JSON.parse(localStorage.getItem('list')); // берем данные из localStorage
+
+    render(); // запускаем
+}
 
 const render = function() {
     todoList.innerHTML = '';
     todoCompleted.innerHTML = '';
 
-    toDoData.forEach(function(item, index) {
+    toDoData.forEach(function(item, index) { // создаем элементы из массива
         const li = document.createElement('li');
         li.classList.add('todo-item');
 
@@ -49,6 +43,8 @@ const render = function() {
             toDoData.splice(index);
             render();
         })
+
+        localStorage.setItem('list', JSON.stringify(toDoData));
     })
 }
 
@@ -68,3 +64,5 @@ todoControl.addEventListener('submit', function(event) {
 
     render();
 })
+
+start();
