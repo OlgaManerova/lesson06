@@ -10,9 +10,14 @@ let toDoData = [];
 
 
 const start = function() {
-    toDoData = JSON.parse(localStorage.getItem('list')); // берем данные из localStorage
+    if (localStorage.length != 0) {
+        toDoData = JSON.parse(localStorage.getItem('list')); // берем данные из localStorage
 
-    render(); // запускаем
+        render(); // запускаем
+    } else {
+        alert('Задач пока нет');
+    }
+
 }
 
 const render = function() {
